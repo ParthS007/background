@@ -7,8 +7,8 @@ application, be it a CLI app, or a web app.
 Work in progress.
 
 
-Usage
------
+Basic Usage
+-----------
 
 ::
 
