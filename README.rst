@@ -36,6 +36,7 @@ Advanced Usage
     # Use 40 background threads.
     background.n = 40
 
+
     @background.task
     def work():
         import time
@@ -44,6 +45,7 @@ Advanced Usage
     @background.callback
     def work_callback(future):
         print(future)
+
 
     for _ in range(100):
         work()
