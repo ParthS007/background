@@ -4,8 +4,6 @@ background: does what it says it does
 This module makes it stupidly simple to run things in the background of your
 application, be it a CLI app, or a web app.
 
-Work in progress.
-
 
 Basic Usage
 -----------
