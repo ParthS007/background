@@ -5,42 +5,36 @@ import concurrent.futures
 
 from decorator import decorator
 
+def default_n():
+    return multiprocessing.cpu_count()
 
-class Worker(object):
-    """A Background Worker."""
+n = default_n()
+pool = concurrent.futures.ThreadPoolExecutor(max_workers=n)
+callbacks = []
+results = []
 
-    def __init__(self, n=None, use_subprocess=False):
-        self.n = n
-        self.use_subprocess = use_subprocess
+def run(f, *args, **kwargs):
 
-        self.configure_n()
+    pool._max_workers = n
+    pool._adjust_thread_count()
 
-        if self.uses_subprocess:
-            self.pool = concurrent.futures.ProcessPoolExecutor(max_workers=self.n)
-        else:
-            self.pool = concurrent.futures.ThreadPoolExecutor(max_workers=self.n)
+    f = pool.submit(f, *args, **kwargs)
+    results.append(f)
 
-    @property
-    def uses_threads(self):
-        return not self.uses_subprocess
-
-    @property
-    def uses_subprocess(self):
-        return self.use_subprocess
-
-    def configure_n(self):
-        if self.n is None:
-            self.n = multiprocessing.cpu_count()
-
-    # @decorator
-    def run(self, f, *args, **kwargs):
-        self.pool.submit(f, *args, **kwargs)
-
-
-default_worker = Worker()
-
+    return f
 
 @decorator
 def task(f, *args, **kwargs):
-    return default_worker.run(f)
+    result = run(f, *args, **kwargs)
+    results.append(result)
 
+    for cb in callbacks:
+        result.add_done_callback(cb)
+
+    return result
+
+def callback(f):
+    callbacks.append(f)
+    def register_callback():
+        f()
+    return register_callback
