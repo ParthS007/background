@@ -3,8 +3,6 @@
 import multiprocessing
 import concurrent.futures
 
-from decorator import decorator
-
 def default_n():
     return multiprocessing.cpu_count()
 
@@ -23,15 +21,17 @@ def run(f, *args, **kwargs):
 
     return f
 
-@decorator
+
 def task(f, *args, **kwargs):
-    result = run(f, *args, **kwargs)
-    results.append(result)
+    def do_task():
+        result = run(f, *args, **kwargs)
+        results.append(result)
 
-    for cb in callbacks:
-        result.add_done_callback(cb)
+        for cb in callbacks:
+            result.add_done_callback(cb)
 
-    return result
+        return result
+    return do_task
 
 def callback(f):
     callbacks.append(f)
