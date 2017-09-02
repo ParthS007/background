@@ -31,14 +31,19 @@ Advanced Usage
 
 ::
 
-    from background import Worker
+    import background
 
-    worker = Worker(n=10, use_subprocess=True)
+    # Use 40 background threads.
+    background.n = 40
 
-    @worker.task
+    @background.task
     def work():
         import time
         time.sleep(10)
+
+    @background.callback
+    def work_callback(future):
+        print(future)
 
     for _ in range(100):
         work()
