@@ -8,7 +8,8 @@ application, be it a CLI app, or a web app.
 Basic Usage
 -----------
 
-::
+.. code:: python
+
 
     import time
 
@@ -27,7 +28,8 @@ Basic Usage
 Advanced Usage
 --------------
 
-::
+.. code:: python
+
 
     import background
 
