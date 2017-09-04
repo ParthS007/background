@@ -20,6 +20,7 @@ Basic Usage
 
     import background
 
+
     @background.task
     def work():
         # Do something expensive here.
@@ -35,16 +36,16 @@ Advanced Usage
 
 .. code:: python
 
+    import time
 
     import background
 
     # Use 40 background threads.
     background.n = 40
-
+    
 
     @background.task
     def work():
-        import time
         time.sleep(10)
 
     @background.callback
