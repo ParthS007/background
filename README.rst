@@ -60,5 +60,5 @@ Installation
 
 ::
 
-    $ pipenv install backround
+    $ pipenv install background
     ✨🍰✨
