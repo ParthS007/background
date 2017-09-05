@@ -3,7 +3,7 @@ Background: run stuff in the backround
 
     "An elegant decorator-based abstraction around Python 3's concurrent.futures ThreadPoolExecutor class" 
 
-    — Simon Wilson
+    — Simon Willison
 
 This module makes it stupidly simple to run things in the background of your
 application, be it a CLI app, or a web app.
