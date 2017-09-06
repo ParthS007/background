@@ -27,7 +27,6 @@ def run(f, *args, **kwargs):
 def task(f, *args, **kwargs):
     def do_task():
         result = run(f, *args, **kwargs)
-        results.append(result)
 
         for cb in callbacks:
             result.add_done_callback(cb)
