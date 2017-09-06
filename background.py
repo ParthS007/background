@@ -24,8 +24,8 @@ def run(f, *args, **kwargs):
     return f
 
 
-def task(f, *args, **kwargs):
-    def do_task():
+def task(f):
+    def do_task(*args, **kwargs):
         result = run(f, *args, **kwargs)
         results.append(result)
 
