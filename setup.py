@@ -21,7 +21,7 @@ VERSION = '0.1.1'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    'futures'
+    "futures; python_version<'3.2'"
     # 'requests', 'maya', 'records',
 ]
 
