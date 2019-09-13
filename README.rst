@@ -1,5 +1,5 @@
-Background: run stuff in the backround
-======================================
+Background: run stuff in the background
+=======================================
 
     "An elegant decorator-based abstraction around Python 3's concurrent.futures ThreadPoolExecutor class" 
 
