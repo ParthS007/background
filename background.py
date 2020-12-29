@@ -7,6 +7,7 @@ import concurrent.futures
 def default_n():
     return multiprocessing.cpu_count()
 
+
 n = default_n()
 pool = concurrent.futures.ThreadPoolExecutor(max_workers=n)
 callbacks = []
@@ -32,6 +33,7 @@ def task(f):
             result.add_done_callback(cb)
 
         return result
+
     return do_task
 
 
