@@ -47,10 +47,11 @@ Advanced Usage
     @background.task
     def work():
         time.sleep(10)
+        return "Done!"
 
     @background.callback
     def work_callback(future):
-        print(future)
+        print(future.result())
 
 
     for _ in range(100):
