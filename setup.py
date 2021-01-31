@@ -17,7 +17,7 @@ DESCRIPTION = "It does what it says it does."
 URL = "https://github.com/kennethreitz/background"
 EMAIL = "me@kennethreitz.org"
 AUTHOR = "Kenneth Reitz"
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 MAINTAINER = "Parth Shandilya"
 MAINTAINER_EMAIL = "parth1989shandilya@gmail.com"
 
